@@ -4,7 +4,7 @@ import { CreateContainer, Header, MainContainer } from "./components";
 import { AnimatePresence } from "framer-motion";
 const App = () => {
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       <div className="flex flex-col w-screen h-auto bg-primary">
         <Header />
         <main className="w-full p-8 mt-24">
