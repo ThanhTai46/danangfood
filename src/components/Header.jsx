@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../img/logo.png";
+import Logo from "../img/logo_pc.png";
 import Avatar from "../img/avatar.png";
 import { app } from "../firebase.config";
 import { MdOutlineShoppingCart, MdAdd, MdLogout } from "react-icons/md";
@@ -41,8 +41,8 @@ const Header = () => {
 
       <div className="items-center justify-between hidden w-full h-full md:flex ">
         <Link to="/" className="flex items-center gap-2 ">
-          <img src={Logo} className="object-cover w-8" alt="logo" />
-          <p className="text-xl font-medium text-headingColor">DaNang Food</p>
+          <img src={Logo} className="object-cover w-full h-full" alt="logo" />
+          {/* <p className="text-xl font-medium text-headingColor">KFC Food</p> */}
         </Link>
         <div className="flex items-center gap-8">
           <motion.ul
@@ -87,7 +87,10 @@ const Header = () => {
               >
                 {user && user.email === "luxurydemon123@gmail.com" ? (
                   <Link to="/createItem">
-                    <p className="flex items-center gap-3 px-4 py-2 text-base transition-all duration-100 ease-in-out cursor-pointer hover:bg-slate-200 text-textColor ">
+                    <p
+                      onClick={() => setIsMenu((isMenu) => !isMenu)}
+                      className="flex items-center gap-3 px-4 py-2 text-base transition-all duration-100 ease-in-out cursor-pointer hover:bg-slate-200 text-textColor "
+                    >
                       New Item
                     </p>
                   </Link>
@@ -108,10 +111,17 @@ const Header = () => {
 
       {/* Mobile */}
       <div className="flex items-center justify-between w-full h-full md:hidden">
+        <div className="relative flex items-center justify-center cursor-pointer">
+          <MdOutlineShoppingCart className="text-2xl text-textColor" />
+          <div className="absolute flex items-center justify-center w-5 h-5 rounded-full -top-2 left-4 bg-cartNumBg">
+            <p className="text-xs font-semibold text-white">2</p>
+          </div>
+        </div>
         <Link to="/" className="flex items-center gap-2 ">
-          <img src={Logo} className="object-cover w-8" alt="logo" />
-          <p className="text-xl font-medium text-headingColor">DaNang Food</p>
+          <img src={Logo} className="object-cover w-full h-full" alt="logo" />
+          {/* <p className="text-xl font-medium text-headingColor">DaNang Food</p> */}
         </Link>
+
         <div className="relative">
           <motion.img
             whileTap={{ scale: 0.6 }}
@@ -129,7 +139,10 @@ const Header = () => {
             >
               {user && user.email === "luxurydemon123@gmail.com" ? (
                 <Link to="/createItem">
-                  <p className="flex items-center gap-3 px-4 py-2 text-base transition-all duration-100 ease-in-out cursor-pointer hover:bg-slate-200 text-textColor ">
+                  <p
+                    onClick={() => setIsMenu((isMenu) => !isMenu)}
+                    className="flex items-center gap-3 px-4 py-2 text-base transition-all duration-100 ease-in-out cursor-pointer hover:bg-slate-200 text-textColor "
+                  >
                     New Item
                   </p>
                 </Link>
